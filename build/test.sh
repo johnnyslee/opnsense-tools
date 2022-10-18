@@ -58,7 +58,9 @@ make -C${COREDIR} ${COREENV} style
 make -C${COREDIR} ${COREENV} test
 EOF
 
-if [ -z "${PLUGINSLIST}" ]; then
+if [ "${PLUGINSLIST}" ]; then
+	PLUGINSLIST=$(multi_line_list "${PLUGINSLIST}")
+else
 	PLUGINSCONF=${CONFIGDIR}/plugins.conf
 
 	if [ -f ${PLUGINSCONF}.local ]; then

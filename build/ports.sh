@@ -56,10 +56,14 @@ if check_packages ${SELF} ${ARGS}; then
 	exit 0
 fi
 
-if [ -z "${PORTSLIST}" ]; then
+if [ "${PORTSLIST}" ]; then
+	PORTSLIST=$(multi_line_list "${PORTSLIST}")
+else
 	PORTSLIST=$(list_packages ${CONFIGDIR}/ports.conf)
 fi
-if [ -z "${AUXLIST}" ]; then
+if [ "${AUXLIST}" ]; then
+	AUXLIST=$(multi_line_list "${AUXLIST}")
+else
 	AUXLIST=$(list_packages ${CONFIGDIR}/aux.conf)
 fi
 

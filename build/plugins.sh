@@ -36,7 +36,9 @@ if check_packages ${SELF} ${@}; then
 	exit 0
 fi
 
-if [ -z "${PLUGINSLIST}" ]; then
+if [ "${PLUGINSLIST}" ]; then
+	PLUGINSLIST=$(multi_line_list "${PLUGINSLIST}")
+else
 	PLUGINSCONF=${CONFIGDIR}/plugins.conf
 
 	if [ -f ${PLUGINSCONF}.local ]; then

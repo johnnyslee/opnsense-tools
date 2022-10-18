@@ -1235,3 +1235,8 @@ list_packages()
 
 	list_config ${@}
 }
+
+multi_line_list()
+{
+	echo "${@}" | tr ',[:blank:]' '\n'
+}

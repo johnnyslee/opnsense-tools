@@ -31,7 +31,9 @@ SELF=audit
 
 . ./common.sh
 
-if [ -z "${PORTSLIST}" ]; then
+if [ "${PORTSLIST}" ]; then
+	PORTSLIST=$(multi_line_list "${PORTSLIST}")
+else
 	PORTSLIST=$(list_packages ${CONFIGDIR}/ports.conf)
 fi
 
